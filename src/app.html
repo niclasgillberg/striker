@@ -1,0 +1,73 @@
+<template>
+  <div class="application-wrapper">
+    <aside class="sidebar">
+      <section class="postSection">
+        <h1>Drafts</h1>
+        <ul class="posts">
+          <li class="post" 
+              repeat.for="draft of drafts()"
+              title="${draft.title}">${draft.title}</li>
+        </ul>
+      </section>
+      <section class="postSection">
+        <h1>Published posts</h1>
+        <ul class="posts">
+          <li class="post"
+              repeat.for="post of publishedPosts()"
+              title="${post.title}">${post.title}</li>
+        </ul>
+        <ul class="posts">
+          <li class="postGroup">
+            <label>2015</label>
+            <ul class="posts">
+              <li class="postGroup">
+                <label>Juli</label>
+                <ul class="posts">
+                  <li class="post">Using Angular to fix collapsingwidth problem  in CSS grids</li>
+                </ul>
+              </li>
+              <li class="postGroup">
+                <label>June</label>
+                <ul class="posts">
+                  <li class="post">Installing ASP.NET vNext on OSx</li>
+                </ul>
+              </li>
+              <li class="postGroup">
+                <label>April</label>
+                <ul class="posts">
+                  <li class="post">Running Gulp during TFS build</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="postGroup">
+            <label>2014</label>
+            <ul class="posts">
+              <li class="postGroup">
+                <label>Juli</label>
+                <ul class="posts">
+                  <li class="post">Using Angular to fix collapsingwidth problem  in CSS grids</li>
+                </ul>
+              </li>
+              <li class="postGroup">
+                <label>June</label>
+                <ul class="posts">
+                  <li class="post">Installing ASP.NET vNext on OSx</li>
+                </ul>
+              </li>
+              <li class="postGroup">
+                <label>April</label>
+                <ul class="posts">
+                  <li class="post">Running Gulp during TFS build</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </aside>
+    <div class="editor">
+      <router-view></router-view>
+    </div>
+  </div>
+</template>

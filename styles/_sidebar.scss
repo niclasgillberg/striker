@@ -1,0 +1,37 @@
+
+
+.sidebar {
+  width: $sidebar-width;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  background-color: $primaryColor;
+  color: hsl(0,0%,95%);
+}
+
+.postSection > h1 {
+  padding: $defaultSpacing;
+  padding-left: 2 * $defaultSpacing;
+  background-color: darken($primaryColor, 20%);
+}
+
+.posts {
+  margin: 0;
+  margin-left: 2 * $defaultSpacing;
+  padding: 0;
+  list-style: none;
+  
+  .post,
+  .postGroup {
+    margin: 0 0 $defaultSpacing;
+  }
+  
+  .post {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+
