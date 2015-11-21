@@ -1,5 +1,6 @@
 import {inject} from "aurelia-framework";
 import {PostGroupingService} from "./lib/post-grouping-service";
+import moment from "moment";
 
 @inject(PostGroupingService)
 export class App {
@@ -50,8 +51,29 @@ export class App {
   
   get publishedPosts() {
     return this.groupingService.groupPublishedPosts(
-      this.posts.filter(post => !post.draft && post.publish_date)
+      this.posts.filter(post => !post.draft && post.publishDate)
     );
+  }
+  
+  convertPostList(posts) {
+    const convertedPosts = [];
+    for(let p in posts) {
+      convertedPosts.push({
+        key: this.formatKey(p)
+      });
+    }
+    
+    return convertedPosts;
+  }
+  
+  formatKey(key) {
+    let parseResult = key.match(/^\d+?$/)[0];
+    if(parseResult >= 0 && parseResult < 12){
+      let date = new Date();
+      date.setMonth(key);
+      return moment(date).format("MMMM");
+    }
+    return key;
   }
   
   configureRouter(config, router) {

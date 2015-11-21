@@ -46,6 +46,7 @@ System.config({
     "fetch": "github:github/fetch@0.9.0",
     "font-awesome": "npm:font-awesome@4.4.0",
     "lodash": "npm:lodash@3.10.1",
+    "moment": "npm:moment@2.10.6",
     "text": "github:systemjs/plugin-text@0.0.2",
     "github:aurelia/animator-css@0.17.0": {
       "aurelia-metadata": "github:aurelia/metadata@0.9.0",
@@ -214,6 +215,9 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:lodash@3.10.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:moment@2.10.6": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:process@0.11.2": {

@@ -3,18 +3,17 @@
   
   <div class="application-wrapper">
     <aside class="sidebar">
-      <layout-box title="Drafts" posts.bind="drafts" nested="false"></layout-box>
-      <layout-box title="Published posts" posts.bind="publishedPosts" nested="true"></layout-box>
-      <section class="postSection">
-        <h1>Published posts</h1>
+      <layout-box title="Drafts">
         <ul class="posts">
-          <li class="post"
-              repeat.for="post of publishedPosts"
+          <li class="post" 
+              repeat.for="post of drafts"
               title="${post.title}">${post.title}</li>
         </ul>
+      </layout-box>
+      <layout-box title="Published posts">
         <ul class="posts">
-          <li class="postGroup">
-            <label>2015</label>
+          <li class="postGroup" repeat.for="year in publishedPosts">
+            <label>${year}</label>
             <ul class="posts">
               <li class="postGroup">
                 <label>Juli</label>
@@ -60,7 +59,7 @@
             </ul>
           </li>
         </ul>
-      </section>
+      </layout-box>
     </aside>
     <div class="editor">
       <router-view></router-view>
