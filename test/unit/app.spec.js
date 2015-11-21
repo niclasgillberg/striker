@@ -1,11 +1,17 @@
 import {App} from '../../src/app';
 import {PostTestData} from "../data/posts";
 
+class FakeStorage {
+  loadPosts() {
+    return PostTestData.getTestPosts();
+  }
+}
+
 describe("the App module", () => {
   let app;
   
   beforeEach(() => {
-    app = new App();
+    app = new App(null, new FakeStorage());
   });
   
   describe("converting list of posts", () => {

@@ -11,50 +11,16 @@
         </ul>
       </layout-box>
       <layout-box title="Published posts">
-        Posts: ${publishedPosts.length}
         <ul class="posts">
-          <li class="postGroup">
-            <label>dsa</label>
+          <li class="postGroup" repeat.for="year of publishedPosts">
+            <label>${year.key}</label>
             <ul class="posts">
-              <li class="postGroup">
-                <label>Juli</label>
+              <li class="postGroup" repeat.for="month of year.items">
+                <label>${month.key}</label>
                 <ul class="posts">
-                  <li class="post">Using Angular to fix collapsingwidth problem  in CSS grids</li>
-                </ul>
-              </li>
-              <li class="postGroup">
-                <label>June</label>
-                <ul class="posts">
-                  <li class="post">Installing ASP.NET vNext on OSx</li>
-                </ul>
-              </li>
-              <li class="postGroup">
-                <label>April</label>
-                <ul class="posts">
-                  <li class="post">Running Gulp during TFS build</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="postGroup">
-            <label>2014</label>
-            <ul class="posts">
-              <li class="postGroup">
-                <label>Juli</label>
-                <ul class="posts">
-                  <li class="post">Using Angular to fix collapsingwidth problem  in CSS grids</li>
-                </ul>
-              </li>
-              <li class="postGroup">
-                <label>June</label>
-                <ul class="posts">
-                  <li class="post">Installing ASP.NET vNext on OSx</li>
-                </ul>
-              </li>
-              <li class="postGroup">
-                <label>April</label>
-                <ul class="posts">
-                  <li class="post">Running Gulp during TFS build</li>
+                  <li class="post" repeat.for="post of month.items">
+                    ${post.title}
+                  </li>
                 </ul>
               </li>
             </ul>
