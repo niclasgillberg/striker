@@ -1,19 +1,15 @@
 <template>
+  <require from="./shell/layout-box"></require>
+  
   <div class="application-wrapper">
     <aside class="sidebar">
-      <section class="postSection">
-        <h1>Drafts</h1>
-        <ul class="posts">
-          <li class="post" 
-              repeat.for="draft of drafts()"
-              title="${draft.title}">${draft.title}</li>
-        </ul>
-      </section>
+      <layout-box title="Drafts" posts.bind="drafts" nested="false"></layout-box>
+      <layout-box title="Published posts" posts.bind="publishedPosts" nested="true"></layout-box>
       <section class="postSection">
         <h1>Published posts</h1>
         <ul class="posts">
           <li class="post"
-              repeat.for="post of publishedPosts()"
+              repeat.for="post of publishedPosts"
               title="${post.title}">${post.title}</li>
         </ul>
         <ul class="posts">

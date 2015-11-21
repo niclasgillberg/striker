@@ -14,7 +14,11 @@ module.exports = function(config) {
 
     jspm: {
       // Edit this to your needs
-      loadFiles: ['src/**/*.js', 'test/unit/**/*.js'],
+      loadFiles: [
+        'src/**/*.js', 
+        'test/data/**/*.js', 
+        'test/unit/**/*.js'
+      ],
       paths: {
         '*': '*.js'
       }
@@ -51,7 +55,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
 
     // web server port

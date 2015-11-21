@@ -1,6 +1,11 @@
+import {inject} from "aurelia-framework";
+import {PostGroupingService} from "./lib/post-grouping-service";
+
+@inject(PostGroupingService)
 export class App {
   
-  constructor() {
+  constructor(groupingService) {
+    this.groupingService = groupingService;
     this.posts =[{ 
       title: "Browser bundling with webpack",
       draft: true 
@@ -37,12 +42,16 @@ export class App {
     }];
   }
   
-  drafts() {
-    return this.posts.filter(post => post.draft);
+  get drafts() {
+    return this.groupingService.groupDrafts(
+      this.posts.filter(post => post.draft)
+    );
   }
   
-  publishedPosts() {
-    return this.posts.filter(post => !post.draft && post.publish_date)
+  get publishedPosts() {
+    return this.groupingService.groupPublishedPosts(
+      this.posts.filter(post => !post.draft && post.publish_date)
+    );
   }
   
   configureRouter(config, router) {

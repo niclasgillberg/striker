@@ -1,0 +1,10 @@
+<template>
+  <section class="postSection">
+    <h1>${title}</h1>
+    <ul class="posts">
+      <li class="post" 
+          repeat.for="post of posts"
+          title="${post.title}">${post.title}</li>
+    </ul>
+  </section>
+</template>
