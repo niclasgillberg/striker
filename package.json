@@ -1,22 +1,21 @@
 {
-  "name": "aurelia-skeleton-navigation",
-  "version": "0.19.0",
-  "description": "A starter kit for building a standard navigation-style app with Aurelia.",
+  "name": "striker",
+  "version": "0.1.0",
+  "description": "A blog application for Metalsmith.",
   "keywords": [
-    "aurelia",
-    "navigation",
-    "skeleton"
+    "electron",
+    "metalsmith"
   ],
-  "homepage": "http://aurelia.io",
+  "homepage": "http://github.com/niclassahlin/striker",
   "bugs": {
-    "url": "https://github.com/aurelia/skeleton-navigation/issues"
+    "url": "https://github.com/niclassahlin/striker/issues"
   },
   "license": "MIT",
-  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "author": "Niclas Sahlin <niclas@niclassahlin.com> (https://niclassahlin.com)",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/aurelia/skeleton-navigation"
+    "url": "http://github.com/niclassahlin/striker"
   },
   "scripts": {
     "test": "gulp test",
