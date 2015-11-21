@@ -33,9 +33,10 @@ describe("the PostGrouping service", () => {
       expect(service.groupPublishedPosts(publishedPosts)["2014"]).toBeDefined();
     });
     
-    it("groups on year and month"/*, () => {
+    it("groups on year and month", () => {
       expect(service.groupPublishedPosts(publishedPosts)["2015"]["6"]).toBeDefined()
-    }*/);
+      expect(service.groupPublishedPosts(publishedPosts)["2015"]["5"]).toBeDefined()
+    });
     
   });
 });
