@@ -24,22 +24,22 @@ export class App {
       draft: true 
     },{ 
       title: "Using Angular to fix collapsingwidth problem in CSS grids",
-      publish_date: new Date("2015-07-05") 
+      publishDate: new Date("2015-07-05") 
     },{ 
       title: "Installing ASP.NET vNext on OSx",
-      publish_date: new Date("2015-06-06") 
+      publishDate: new Date("2015-06-06") 
     },{ 
       title: "Running Gulp during TFS build",
-      publish_date: new Date("2015-04-10") 
+      publishDate: new Date("2015-04-10") 
     },{ 
       title: "Using Angular to fix collapsingwidth problem in CSS grids",
-      publish_date: new Date("2014-07-05") 
+      publishDate: new Date("2014-07-05") 
     },{ 
       title: "Installing ASP.NET vNext on OSx",
-      publish_date: new Date("2014-06-06") 
+      publishDate: new Date("2014-06-06") 
     },{ 
       title: "Running Gulp during TFS build",
-      publish_date: new Date("2014-04-10") 
+      publishDate: new Date("2014-04-10") 
     }];
   }
   
@@ -50,16 +50,20 @@ export class App {
   }
   
   get publishedPosts() {
-    return this.groupingService.groupPublishedPosts(
+    return this.convertPostList(this.groupingService.groupPublishedPosts(
       this.posts.filter(post => !post.draft && post.publishDate)
-    );
+    ));
   }
   
   convertPostList(posts) {
     const convertedPosts = [];
     for(let p in posts) {
+      items = posts[p];
       convertedPosts.push({
-        key: this.formatKey(p)
+        key: this.formatKey(p),
+        items: items instanceof Array 
+                ? items 
+                : this.convertPostList(items)
       });
     }
     
@@ -67,8 +71,13 @@ export class App {
   }
   
   formatKey(key) {
-    let parseResult = key.match(/^\d+?$/)[0];
-    if(parseResult >= 0 && parseResult < 12){
+    if(key == null)
+      return;
+      
+    let parseResult = key.match(/^\d+?$/);
+    if(parseResult != null && 
+       parseResult[0] >= 0 && 
+       parseResult[0] < 12){
       let date = new Date();
       date.setMonth(key);
       return moment(date).format("MMMM");

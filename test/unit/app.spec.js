@@ -1,4 +1,5 @@
 import {App} from '../../src/app';
+import {PostTestData} from "../data/posts";
 
 describe("the App module", () => {
   let app;
@@ -19,7 +20,25 @@ describe("the App module", () => {
     
     it("converts the label", () => {
       expect(app.convertPostList({"6": []})[0].key).toEqual("July");
-    })
+    });
+    
+    it("converts labels on multiple levels", () => {
+      expect(app.convertPostList({
+        "2015": {
+          "6": [{
+            title: "post title"
+          }]
+        }
+      })).toEqual([{
+        key: "2015",
+        items: [{
+          key: "July",
+          items: [{
+            title: "post title"
+          }]
+        }]
+      }]);
+    });
     
   });
   
@@ -63,8 +82,8 @@ describe("the App module", () => {
         expect(app.formatKey("20")).toEqual("20");
       });
       
-    })
+    });
     
-  })
+  });
   
-})
+});
