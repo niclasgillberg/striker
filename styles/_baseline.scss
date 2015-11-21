@@ -7,3 +7,22 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
+html,
+body,
+.application-wrapper {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Verdana;
+}
+
+.application-wrapper {
+  display: flex;
+  align-items: stretch;
+}
