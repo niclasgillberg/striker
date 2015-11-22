@@ -3,14 +3,14 @@
   
   <div class="application-wrapper">
     <aside class="sidebar">
-      <layout-box title="Drafts">
+      <layout-box heading="Drafts">
         <ul class="posts">
           <li class="post" 
               repeat.for="post of drafts"
               title="${post.title}">${post.title}</li>
         </ul>
       </layout-box>
-      <layout-box title="Published posts">
+      <layout-box heading="Published posts">
         <ul class="posts">
           <li class="postGroup" repeat.for="year of publishedPosts">
             <label>${year.label}</label>
@@ -18,7 +18,8 @@
               <li class="postGroup" repeat.for="month of year.items">
                 <label>${month.label}</label>
                 <ul class="posts">
-                  <li class="post" repeat.for="post of month.items">
+                  <li class="post" title.bind="post.title" 
+                      repeat.for="post of month.items">
                     ${post.title}
                   </li>
                 </ul>

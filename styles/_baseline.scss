@@ -26,4 +26,5 @@ body {
 .application-wrapper {
   display: flex;
   align-items: stretch;
+  flex-direction: row-reverse;
 }
