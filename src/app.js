@@ -1,58 +1,33 @@
 import {inject} from "aurelia-framework";
 import {PostGroupingService} from "./lib/post-grouping-service";
 import {PostStorage} from "./lib/storage/post-storage";
+import {PostFormatter} from "./lib/post-formatter";
 import moment from "moment";
 import _ from "lodash";
 
-@inject(PostGroupingService, PostStorage)
+@inject(PostGroupingService, PostStorage, PostFormatter)
 export class App {
   
-  constructor(groupingService, storage) {
+  constructor(groupingService, storage, formatter) {
     this.groupingService = groupingService;
     this.storage = storage;
-  }
-  
-  get drafts() {
-    return this.groupingService.groupDrafts(
-      this.storage.loadDrafts()
-    );
-  }
-  
-  get publishedPosts() {
-    return this.convertPostList(this.groupingService.groupPublishedPosts(
-      this.storage.loadPublishedPosts()
-    ));
-  }
-  
-  convertPostList(posts) {
-    const convertedPosts = [];
-    for(let p in posts) {
-      const items = posts[p];
-      convertedPosts.push({
-        key: p,
-        label: this.formatKey(p),
-        items: items instanceof Array 
-                ? items 
-                : this.convertPostList(items)
-      });
-    }
+    this.formatter = formatter;
     
-    return _.sortByOrder(convertedPosts, x => x.key, "desc");
+    this.updatePosts();
   }
   
-  formatKey(key) {
-    if(key == null)
-      return;
-      
-    let parseResult = key.match(/^\d+?$/);
-    if(parseResult != null && 
-       parseResult[0] >= 0 && 
-       parseResult[0] < 12){
-      let date = new Date();
-      date.setMonth(key);
-      return moment(date).format("MMMM");
-    }
-    return key;
+  updatePosts() {
+    this.drafts = this.formatter.formatPostList(
+      this.groupingService.groupDrafts(
+        this.storage.loadDrafts()
+      )
+    );
+    
+    this.publishedPosts = this.formatter.formatPostList(
+      this.groupingService.groupPublishedPosts(
+        this.storage.loadPublishedPosts()
+      )
+    );
   }
   
   configureRouter(config, router) {
