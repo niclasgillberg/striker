@@ -1,5 +1,6 @@
 import {PostGroupingService} from "../../../src/lib/post-grouping-service";
 import {PostTestData} from "../../data/posts";
+import _ from "lodash";
 
 describe("the PostGrouping service", () => {
   let service;

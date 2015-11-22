@@ -13,10 +13,10 @@
       <layout-box title="Published posts">
         <ul class="posts">
           <li class="postGroup" repeat.for="year of publishedPosts">
-            <label>${year.key}</label>
+            <label>${year.label}</label>
             <ul class="posts">
               <li class="postGroup" repeat.for="month of year.items">
-                <label>${month.key}</label>
+                <label>${month.label}</label>
                 <ul class="posts">
                   <li class="post" repeat.for="post of month.items">
                     ${post.title}

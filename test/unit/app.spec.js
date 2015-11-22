@@ -25,7 +25,7 @@ describe("the App module", () => {
     });
     
     it("converts the label", () => {
-      expect(app.convertPostList({"6": []})[0].key).toEqual("July");
+      expect(app.convertPostList({"6": []})[0].label).toEqual("July");
     });
     
     it("converts labels on multiple levels", () => {
@@ -37,13 +37,58 @@ describe("the App module", () => {
         }
       })).toEqual([{
         key: "2015",
+        label: "2015",
         items: [{
-          key: "July",
+          key: "6",
+          label: "July",
           items: [{
             title: "post title"
           }]
         }]
       }]);
+    });
+    
+    describe("the order of items", () => {
+      let posts;
+      
+      beforeEach(() => {
+        posts = {
+          "2013": {
+            "1": [{
+              title: "early"
+            }]
+          },
+          "2015": {
+            "6": [{
+              title: "late late"
+            }],
+            "5": [{
+              title: "late early"
+            }]
+          },
+          "2014": {
+            "6": [{
+              title: "middle late"
+            }],
+            "5": [{
+              title: "middle early"
+            }]
+          }
+        };
+      });
+      
+      it("orders the first level on year descending", () => {
+        const convertedList = app.convertPostList(posts);
+        expect(convertedList[0].key).toEqual("2015");
+        expect(convertedList[1].key).toEqual("2014");
+      });
+    
+      it("orders the second level on month descending", () => {
+        const convertedList = app.convertPostList(posts);
+        expect(app.convertPostList(posts)[0].items[0].key).toEqual("6");
+        expect(app.convertPostList(posts)[0].items[1].key).toEqual("5");
+      });
+      
     });
     
   });
