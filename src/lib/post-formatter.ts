@@ -1,5 +1,5 @@
-import _ from "lodash";
-import moment from "moment";
+import * as _ from "lodash";
+import * as moment from "moment";
 
 export class PostFormatter {
   
@@ -19,7 +19,7 @@ export class PostFormatter {
       }
     }
     
-    return _.sortByOrder(formattedPosts, x => x.key, "desc");
+    return _.sortByOrder(formattedPosts, [(x: any) => x.key], ["desc"]);
   }
   
   formatKey(key) {

@@ -1,4 +1,4 @@
-import _ from "lodash";
+import * as _ from "lodash";
 
 export class PostGroupingService {
   groupDrafts(posts) {
@@ -9,17 +9,17 @@ export class PostGroupingService {
     let yearGrouping = this.groupByYear(posts);
     
     for (let year in yearGrouping) {
-      yearGrouping[year] = this.groupByMonth(yearGrouping[year]);
+      yearGrouping[year] = <any>this.groupByMonth(yearGrouping[year]);
     }
     
     return yearGrouping;
   }
   
   groupByYear(posts) {
-    return _.groupBy(posts, x => x.publishDate.getFullYear());
+    return _.groupBy(posts, (x: any) => x.publishDate.getFullYear());
   }
   
   groupByMonth(posts) {
-    return _.groupBy(posts, x => x.publishDate.getMonth());
+    return _.groupBy(posts, (x: any) => x.publishDate.getMonth());
   }
 }

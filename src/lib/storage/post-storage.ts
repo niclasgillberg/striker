@@ -1,4 +1,4 @@
-import _ from "lodash";
+import * as _ from "lodash";
 
 const posts = [{ 
   title: "Browser bundling with webpack",
@@ -41,10 +41,10 @@ export class PostStorage {
   }
   
   loadDrafts() {
-    return _.sortBy(posts.filter(x => x.draft), x => x.title);
+    return _.sortBy(posts.filter((x: any) => x.draft), x => x.title);
   }
   
   loadPublishedPosts() {
-    return _.sortByOrder(posts.filter(x => !x.draft && x.publishDate), x => x.publishDate, "desc");
+    return _.sortByOrder(posts.filter((x: any) => !x.draft && x.publishDate), [(x: any) => x.publishDate], ["desc"]);
   }
 }

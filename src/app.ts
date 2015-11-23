@@ -2,17 +2,18 @@ import {inject} from "aurelia-framework";
 import {PostGroupingService} from "./lib/post-grouping-service";
 import {PostStorage} from "./lib/storage/post-storage";
 import {PostFormatter} from "./lib/post-formatter";
-import moment from "moment";
-import _ from "lodash";
+import * as moment from "moment";
+import * as _ from "lodash";
 
 @inject(PostGroupingService, PostStorage, PostFormatter)
 export class App {
+  public drafts;
+  public publishedPosts;
+  public router;
   
-  constructor(groupingService, storage, formatter) {
-    this.groupingService = groupingService;
-    this.storage = storage;
-    this.formatter = formatter;
-    
+  constructor(private groupingService, 
+              private storage, 
+              private formatter) {
     this.updatePosts();
   }
   
