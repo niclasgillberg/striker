@@ -6,5 +6,10 @@
     "emitDecoratorMetadata": true,
     "noResolve": true,
     "outDir": "dist/"
-	}
+	},
+  "exclude": [
+    "typings/tsd.d.ts",
+    "node_modules",
+    "jspm_packages/npm/"
+  ]
 }

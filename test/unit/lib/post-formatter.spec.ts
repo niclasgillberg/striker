@@ -1,8 +1,8 @@
 import {PostFormatter} from "../../../src/lib/post-formatter";
 import {PostTestData} from "../../data/posts";
 
-const drafts = PostTestData.getTestPosts().filter(x => x.draft);
-const publishedPosts = PostTestData.getTestPosts().filter(x => !x.draft);
+const drafts = PostTestData.getTestPosts().filter((x: any) => x.draft);
+const publishedPosts = PostTestData.getTestPosts().filter((x: any) => !x.draft);
 
 describe("the PostFormatter", () => {
   let pf;
