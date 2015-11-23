@@ -1,9 +1,10 @@
-import {PageObject_Welcome} from './welcome.po.js';
-import {PageObject_Skeleton} from './skeleton.po.js';
+import {PageObject_Welcome} from './welcome.po';
+import {PageObject_Skeleton} from './skeleton.po';
 
 describe('aurelia skeleton app', function() {
   var po_welcome,
-      po_skeleton;
+      po_skeleton,
+      browser;
 
   beforeEach( () => {
     po_skeleton = new PageObject_Skeleton();

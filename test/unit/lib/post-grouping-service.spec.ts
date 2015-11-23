@@ -1,11 +1,11 @@
 import {PostGroupingService} from "../../../src/lib/post-grouping-service";
 import {PostTestData} from "../../data/posts";
-import _ from "lodash";
+import * as _ from "lodash";
 
 describe("the PostGrouping service", () => {
   let service;
-  let drafts = PostTestData.getTestPosts().filter(x => x.draft);
-  let publishedPosts = PostTestData.getTestPosts().filter(x => !x.draft)
+  let drafts = PostTestData.getTestPosts().filter((x: any) => x.draft);
+  let publishedPosts = PostTestData.getTestPosts().filter((x: any) => !x.draft)
   
   beforeEach(() => {
     service = new PostGroupingService();

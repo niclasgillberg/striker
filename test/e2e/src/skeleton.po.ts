@@ -1,3 +1,7 @@
+declare var browser;
+declare var element;
+declare var by;
+
 export class PageObject_Skeleton {
 
   constructor() {

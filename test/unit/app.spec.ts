@@ -5,11 +5,11 @@ import {PostTestData} from "../data/posts";
 
 class FakeStorage {
   loadDrafts() {
-    return PostTestData.getTestPosts().filter(x => x.draft);
+    return PostTestData.getTestPosts().filter((x: any) => x.draft);
   }
   
   loadPublishedPosts() {
-    return PostTestData.getTestPosts().filter(x => !x.draft);
+    return PostTestData.getTestPosts().filter((x: any) => !x.draft);
   }
 }
 
